@@ -44,7 +44,7 @@ server {
 }
 ```
 
-And modify the Express app's listening port to `3001` accordingly
+And modify the Express app's listening port to `3001` in `.env` in the app's root directory
 
 ```sh
 PORT=3001

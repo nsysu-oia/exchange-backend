@@ -1,4 +1,4 @@
-# Back-end Server for [Exchange Program Platform](exchange)
+# Back-end Server for [Exchange Program Platform](https://github.com/nsysu-oia/exchange)
 
 ## Project setup
 ```
@@ -14,6 +14,10 @@ npm run start
 ```
 npm run lint
 ```
+
+### Note for https server
+
+Enable reverse proxy for Express app via Nginx
 
 ```nginx
 server {
@@ -38,4 +42,10 @@ server {
 		proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
 	}
 }
+```
+
+And modify the Express app's listening port to `3001` accordingly
+
+```env
+PORT=3001
 ```

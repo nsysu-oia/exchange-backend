@@ -1,4 +1,4 @@
-# Back-end Server for [Exchange Program Platform](https://github.com/nsysu-oia/exchange)
+# Backend Server for [Exchange Program Platform](https://github.com/nsysu-oia/exchange)
 
 ## Project setup
 ```

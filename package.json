@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "devStart": "DEBUG=exchange-backend:* node ./bin/www",
     "lint": "npx standard --fix"
   },
   "dependencies": {

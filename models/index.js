@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize')
-sequelize = new Sequelize('oia_exchange_platform', 'root', '@Eji6ru4tj4', {
-  host: 'studyabroad.nsysu.edu.tw',
+const sequelize = new Sequelize('oia_exchange_platform', 'root', process.env.DB_PW, {
+  host: 'localhost',
   dialect: 'mariadb',
   dialectOptions: {
     timezone: 'Asia/Taipei'

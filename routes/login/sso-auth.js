@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 const jwt = require('jsonwebtoken')
-const cors = require('cors')
-const bodyParser = require('body-parser')
 const attrs = [
   'studentID',
   'name',
@@ -46,9 +44,6 @@ const statusMap = {
   4: '退學',
   5: '畢業'
 }
-
-router.use(cors())
-router.use(bodyParser.json())
 
 router.post('/', function (req, res) {
   if (req.body) {

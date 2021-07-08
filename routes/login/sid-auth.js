@@ -8,7 +8,11 @@ router.post('/', function (req, res) {
       where: { studentID: req.body.studentID }
     })
     .then(user => {
-      res.json(user)
+      if (!!user)
+        res.json(user)
+      else
+        // the student is not registered in the exchange program
+        res.sendStatus(400)
     })
 })
 

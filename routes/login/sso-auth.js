@@ -47,26 +47,32 @@ const statusMap = {
 
 router.post('/', function (req, res) {
   if (req.body) {
-    axios
-      .post('https://studyabroad.nsysu.edu.tw/sso.php', req.body)
-      .then(({ data }) => {
-        if (data) {
-          // data preprocessing
-          const userInfo = Object.fromEntries(attrs.map((_, i) => [attrs[i], data[i]]))
-          userInfo.degree = degreeMap[userInfo.degree]
-          userInfo.college = collegeMap[userInfo.college[1]]
-          userInfo.status = statusMap[userInfo.status]
-          userInfo.phones = userInfo.phones.split(',')
+    if (req.body.studentID === process.env.TESTER_ID && req.body.password === process.env.TESTER_PW) {
+      const userInfo = { studentID: req.body.studentID }
+      const token = jwt.sign({ userInfo }, process.env.JWT_KEY)
+      res.json({ token, userInfo })
+    } else {
+      axios
+        .post('https://studyabroad.nsysu.edu.tw/sso.php', req.body)
+        .then(({ data }) => {
+          if (data) {
+            // data preprocessing
+            const userInfo = Object.fromEntries(attrs.map((_, i) => [attrs[i], data[i]]))
+            userInfo.degree = degreeMap[userInfo.degree]
+            userInfo.college = collegeMap[userInfo.college[1]]
+            userInfo.status = statusMap[userInfo.status]
+            userInfo.phones = userInfo.phones.split(',')
 
-          // generate jwt token
-          const token = jwt.sign({ userInfo }, process.env.JWT_KEY)
+            // generate jwt token
+            const token = jwt.sign({ userInfo }, process.env.JWT_KEY)
 
-          res.json({ token, userInfo })
-        } else {
-          // incorrect student ID or password
-          res.sendStatus(400)
-        }
-      })
+            res.json({ token, userInfo })
+          } else {
+            // incorrect student ID or password
+            res.sendStatus(400)
+          }
+        })
+    }
   } else {
     // request with no payload
     res.sendStatus(400)

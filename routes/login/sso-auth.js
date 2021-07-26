@@ -1,3 +1,96 @@
+/**
+ * @openapi
+ * /sso-auth:
+ *   post:
+ *     summary: Examine StudentID and Password
+ *     description: >
+ *       This examine a pair of a studentID and a password via
+ *       an NSYSU SSO authentication proxy, `studyabroad.nsysu.edu.tw/sso.php`,.
+ *       Noted that a tester credential pair can be set via
+ *       `.env` file and access it by `process.env.TESTER_ID`
+ *       and `process.env.TESTER_PW`.
+ *     tags:
+ *       - authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               studentID:
+ *                 type: string
+ *                 description: >
+ *                   The student ID of the student enrolled in 
+ *                   the exchange program *(case-insensitive)*.
+ *                 example: yourStudentIDHere
+ *               password:
+ *                 type: string
+ *                 description: >
+ *                   The NSYSU SSO password.
+ *                 example: yourPasswordHere
+ *             required:
+ *               - studentID
+ *               - password
+ *     responses:
+ *       200:
+ *         description: JWT token and user info
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: JWT generated from the credentials and a secret key.
+ *                 userInfo:
+ *                   type: object
+ *                   properties:
+ *                     studentID:
+ *                       type: string
+ *                     name:
+ *                       type: string
+ *                     degree:
+ *                       type: string
+ *                     college:
+ *                       type: string
+ *                     department:
+ *                       type: string
+ *                     nationalID:
+ *                       type: string
+ *                     status:
+ *                       type: string
+ *                     grade:
+ *                       type: string
+ *                     phones:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                     zipResidential:
+ *                       type: string
+ *                     cityResidential:
+ *                       type: string
+ *                     addressResidential:
+ *                       type: string
+ *                     zipCorrespondence:
+ *                       type: string
+ *                     cityCorrespondence:
+ *                       type: string
+ *                     addressCorrespondence:
+ *                       type: string
+ *                     email:
+ *                       type: string
+ *                     birthYear:
+ *                       type: string
+ *                     birthMonth:
+ *                       type: string
+ *                     birthDay:
+ *                       type: string
+ *       400:
+ *         description: Incorrect credential pair
+ *
+ */
+
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
@@ -64,7 +157,8 @@ router.post('/', function (req, res) {
             userInfo.phones = userInfo.phones.split(',')
 
             // generate jwt token
-            const token = jwt.sign({ userInfo }, process.env.JWT_KEY)
+            const credentials = req.body
+            const token = jwt.sign({ credentials }, process.env.JWT_KEY)
 
             res.json({ token, userInfo })
           } else {

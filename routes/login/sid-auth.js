@@ -22,7 +22,7 @@
  *                 description: >
  *                   The student ID of the student enrolled in 
  *                   the exchange program *(case-insensitive)*.
- *                 example: B073040018
+ *                 example: yourStudentIDHere
  *             required:
  *               - studentID
  *     responses:

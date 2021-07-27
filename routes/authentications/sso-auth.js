@@ -3,14 +3,14 @@
  * /sso-auth:
  *   post:
  *     summary: Examine StudentID and Password
- *     description: >
+ *     description: |
  *       This examine a pair of a studentID and a password via
  *       an NSYSU SSO authentication proxy, `studyabroad.nsysu.edu.tw/sso.php`,.
  *       Noted that a tester credential pair can be set via
  *       `.env` file and access it by `process.env.TESTER_ID`
  *       and `process.env.TESTER_PW`.
  *     tags:
- *       - authentication
+ *       - authentications
  *     requestBody:
  *       required: true
  *       content:
@@ -20,13 +20,13 @@
  *             properties:
  *               studentID:
  *                 type: string
- *                 description: >
+ *                 description: |
  *                   The student ID of the student enrolled in 
  *                   the exchange program *(case-insensitive)*.
  *                 example: yourStudentIDHere
  *               password:
  *                 type: string
- *                 description: >
+ *                 description: |
  *                   The NSYSU SSO password.
  *                 example: yourPasswordHere
  *             required:

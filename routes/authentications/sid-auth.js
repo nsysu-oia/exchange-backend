@@ -3,13 +3,13 @@
  * /sid-auth:
  *   post:
  *     summary: Examine StudentID
- *     description: >
+ *     description: |
  *       This examine if the student ID is presented
  *       in the database, i.e., enrolled in the exchange
  *       program. Noted that a tester ID can be set via
  *       `.env` file and access it by `process.env.TESTER_ID`.
  *     tags:
- *       - authentication
+ *       - authentications
  *     requestBody:
  *       required: true
  *       content:
@@ -19,7 +19,7 @@
  *             properties:
  *               studentID:
  *                 type: string
- *                 description: >
+ *                 description: |
  *                   The student ID of the student enrolled in 
  *                   the exchange program *(case-insensitive)*.
  *                 example: yourStudentIDHere

@@ -1,87 +1,329 @@
 ---
 基本資料:
   - label: 姓名
+    type: text
   - label: 撰寫日期
+    type: date
   - label: 學號
+    type: text
   - label: 甄選年度/出境類別
+    type: text
   - label: 地區
+    type: text
   - label: 中文學院
+    type: text
   - label: 中文系所
+    type: text
   - label: 英文學院
+    type: text
   - label: 英文系所
+    type: text
   - label: 學位
+    type: text
   - label: 年級
+    type: text
   - label: 中文州別
+    type: text
   - label: 中文國別
+    type: text
   - label: 中文交換/研修校名
+    type: text
   - label: 英文州別
+    type: text
   - label: 英文國別
+    type: text
   - label: 英文交換/研修校名
+    type: text
   - label: 中文交換/研修系所
+    type: text
   - label: 英文交換/研修系所
+    type: text
   - label: 交換/研修期間
+    type: text
   - label: 實際停留期間
+    type: select
+    options:
+      - 1個月
+      - 2個月
+      - 3個月
+      - 4個月
+      - 5個月
+      - 6個月
+      - 7個月
+      - 8個月
+      - 9個月
+      - 10個月
+      - 11個月
+      - 12個月
   - label: 獎助來源
+    type: text
 交換/研修/寒暑期期間的花費:
   - label: 簽證費
+    type: number
   - label: 生活費
+    type: number
   - label: 書籍費
+    type: number
   - label: 機票費
+    type: number
   - label: 交通費
+    type: number
   - label: 保險費
+    type: number
   - label: 旅遊費
+    type: number
   - label: 住宿費
+    type: number
   - label: 其他費用
+    type: number
   - label: 語言學校費用
+    type: number
   - label: 總金額
+    type: number
   - label: 請問您的家庭年收入為？
+    type: select
+    options:
+      - 211萬以上
+      - 181-210萬
+      - 151-180萬
+      - 121-150萬
+      - 91-120萬
+      - 61-90萬
+      - 31-60萬
+      - 30萬以下
+      - 符合低收入戶
   - label: 請問您認為您家庭的社會經濟地位是屬於哪一階層？
+    type: select
+    options:
+      - 上層
+      - 中上層
+      - 中層
+      - 中下層
+      - 下層
 住宿:
   - label: 至交換/研修/寒暑期學校就讀期間的住宿？
+    type: select
+    options:
+      - 學校宿舍（校內）
+      - 學校宿舍（校外） 
+      - 學校媒合/推薦的私人住宿機構 
+      - 自己尋找的私人住宿
+      - 自己尋找的住宿家庭
+      - 住自己的親友家
+      - 其他
   - label: 離學校多遠？
+    type: select
+    options:
+      - 走路10分鐘內
+      - 走路11～30分鐘內
+      - 走路半小時～一小時
+      - 搭車半小時內
+      - 搭車半小時～一小時
+      - 搭車一小時以上
   - label: 對於住宿的滿意度
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 滿意/不滿意的原因
+    type: textarea
 動機與收穫:
   - label: 最初選擇出國研修的動機 (複選)
+    type: checkbox
+    options:
+      - 想增進外語能力
+      - 想增進國際視野
+      - 為未來出國念學位作準備
+      - 未來想在國外工作
+      - 獎助學金支援
+      - 畢業門檻
+      - 其他
   - label: 最主要的動機
+    type: select
+    options:
+      - 想增進外語能力
+      - 想增進國際視野
+      - 為未來出國念學位作準備
+      - 未來想在國外工作
+      - 獎助學金支援
+      - 畢業門檻
+      - 其他
   - label: 出國研修的收穫(複選)
+    type: checkbox
+    options:
+      - 想增進外語能力
+      - 想增進國際視野
+      - 體驗國外生活與風俗民情
+      - 增進自我信心，學習獨立
+      - 選修國外課程，嚐試不同上課方式
+      - 與國外學生與學者交流，結交許多良師益友
+      - 確立未來出國進修方向
+      - 其他
   - label: 最大的收穫
+    type: select
+    options:
+      - 想增進外語能力
+      - 想增進國際視野
+      - 體驗國外生活與風俗民情
+      - 增進自我信心，學習獨立
+      - 選修國外課程，嚐試不同上課方式
+      - 與國外學生與學者交流，結交許多良師益友
+      - 確立未來出國進修方向
+      - 其他
 學業表現:
   - label: 整體來說，我認為自己在課程內容之吸收瞭解程度為何？
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 整體來說，我對自己在課程上表現之滿意程度 (包括上課互動、同學間的互動、考試成績等等)
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 整體而言，我對自己在研修學校的表現的滿意程度 (包括上課、學校內的活動等等)
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 研修期間，遭遇的最大關於課程方面的問題？
+    type: textarea
   - label: (承上題)，你的解決方式是?
+    type: textarea
   - label: 此次研修體驗對我我畢業後繼續出國深造之意願。
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 你向其他同學或學弟妹推薦此研修學校的之意願程度。
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: (承上題)，推薦/不推薦的原因是?
+    type: textarea
 課程、活動:
   - label: 此次是否有進交換/研修/寒暑期學校實驗室？
+    type: select
+    options:
+      - 有
+      - 沒有
   - label: 回國後是否繼續進行該項實驗？
+    type: select
+    options:
+      - 有
+      - 沒有
   - label: 你是否有針對實驗成果發表論文？
+    type: select
+    options:
+      - 有
+      - 沒有
   - label: 你對於研修學校的選課安排(選課流程簡單、好選到自己想要的課等等) 的滿意程度
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 你對於研修學校的課程安排(時間安排、課程內容、師資專業等等) 的滿意程度
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 你對於研修學校BUDDY PROGRAM安排的滿意程度
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 你對於研修學校的活動安排(聚會、PARTY、小旅遊等) 的滿意程度
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 整體而言，你對研修學校的滿意程度為何?
+    type: select
+    options:
+      - 非常滿意
+      - 滿意
+      - 普通
+      - 不滿意
+      - 非常不滿意
   - label: 整體而言，你最滿意研修學校的哪些地方?
+    type: text
   - label: 整體而言，你最不滿意研修學校的哪些地方?
+    type: text
 社團、聯繫:
   - label: 你是否有參加社團
+    type: select
+    options:
+      - 有
+      - 沒有
   - label: 參加的社團名稱
+    type: text
   - label: 推薦學弟妹加入社團的意願程度
+    type: select
+    options:
+      - 非常有意願
+      - 有意願
+      - 普通
+      - 無意願
+      - 完全無意願
   - label: 參加社團的感想
+    type: textarea
   - label: 是否願意留下聯絡資訊給有興趣的學弟妹
+    type: select
+    options:
+      - 願意
+      - 不願意
   - label: 聯絡資訊 (Email、手機、FB、Twitter、IG、Blog、YouTube等)
+    type: textarea
 心得報告:
   - label: 學校簡介
+    type: textarea
   - label: 國外研修之課程學習（課內），另外推薦受益最多/最喜歡的課程
+    type: textarea
   - label: 國外研修之生活學習（課外）
+    type: textarea
   - label: 交換/研修之具體效益（請條列式列舉）
+    type: textarea
   - label: 海外生活期間是否曾遭遇困境，及是否解決問題? 如是，請說明如何解決問題;如未解決，請說明事件最大的啟發及思考未來可以怎麼解決?
+    type: textarea
   - label: 海外生活期間是否曾遭遇文化衝擊，您如何去面對及適應?
+    type: textarea
   - label: 海外生活歷練是否為您人生帶來不一樣的改變或者個人特質上的轉變，最大的成長是什麼?
+    type: textarea
   - label: 您認為獎學金對您海外研修最大的幫助是什麼? 有無獎學金是否會改變您的出國計畫?
+    type: textarea
   - label: 感言及心得感想
+    type: textarea
   - label: 英文心得(包含學校簡介、課程學習、生活學習、具體效益、心得感想等等)
+    type: textarea
 ...

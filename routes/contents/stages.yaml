@@ -66,6 +66,7 @@
   applies:
     - title: 返國報告書
       done: false
+      route: ReturnReport
     - title: 交換證明書申請表(有需要者可填寫)
       done: false
   uploads:

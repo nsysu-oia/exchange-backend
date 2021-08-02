@@ -43,49 +43,6 @@
  *                 token:
  *                   type: string
  *                   description: JWT generated from the credentials and a secret key.
- *                 userInfo:
- *                   type: object
- *                   properties:
- *                     studentID:
- *                       type: string
- *                     name:
- *                       type: string
- *                     degree:
- *                       type: string
- *                     college:
- *                       type: string
- *                     department:
- *                       type: string
- *                     nationalID:
- *                       type: string
- *                     status:
- *                       type: string
- *                     grade:
- *                       type: string
- *                     phones:
- *                       type: array
- *                       items:
- *                         type: string
- *                     zipResidential:
- *                       type: string
- *                     cityResidential:
- *                       type: string
- *                     addressResidential:
- *                       type: string
- *                     zipCorrespondence:
- *                       type: string
- *                     cityCorrespondence:
- *                       type: string
- *                     addressCorrespondence:
- *                       type: string
- *                     email:
- *                       type: string
- *                     birthYear:
- *                       type: string
- *                     birthMonth:
- *                       type: string
- *                     birthDay:
- *                       type: string
  *       400:
  *         description: Incorrect credential pair
  *
@@ -157,10 +114,11 @@ router.post('/', function (req, res) {
             userInfo.phones = userInfo.phones.split(',')
 
             // generate jwt token
-            const credentials = req.body
-            const token = jwt.sign({ credentials }, process.env.JWT_KEY)
+            const token = jwt.sign({
+              studentID: req.body.studentID
+            }, process.env.JWT_KEY, { expiresIn: '7d' })
 
-            res.json({ token, userInfo })
+            res.json({ token })
           } else {
             // incorrect student ID or password
             res.sendStatus(400)

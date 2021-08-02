@@ -9,6 +9,63 @@ const User = sequelize.define('User', {
   nameChi: {
     type: DataTypes.STRING(15)
   },
+  degree: {
+    type: DataTypes.STRING
+  },
+  collegeChi: {
+    type: DataTypes.STRING
+  },
+  collegeEng: {
+    type: DataTypes.STRING
+  },
+  departmentChi: {
+    type: DataTypes.STRING
+  },
+  departmentEng: {
+    type: DataTypes.STRING
+  },
+  nationalID: {
+    type: DataTypes.STRING(15)
+  },
+  status: {
+    type: DataTypes.STRING(15)
+  },
+  grade: {
+    type: DataTypes.STRING(15)
+  },
+  phones: {
+    type: DataTypes.STRING
+  },
+  zipResidential: {
+    type: DataTypes.STRING
+  },
+  cityResidential: {
+    type: DataTypes.STRING
+  },
+  addressResidential: {
+    type: DataTypes.STRING
+  },
+  zipCorrespondence: {
+    type: DataTypes.STRING
+  },
+  cityCorrespondence: {
+    type: DataTypes.STRING
+  },
+  addressCorrespondence: {
+    type: DataTypes.STRING
+  },
+  email: {
+    type: DataTypes.STRING
+  },
+  birthYear: {
+    type: DataTypes.STRING(10)
+  },
+  birthMonth: {
+    type: DataTypes.STRING(10)
+  },
+  birthDay: {
+    type: DataTypes.STRING(10)
+  },
   yearApply: {
     type: DataTypes.STRING(15)
   },
@@ -17,18 +74,6 @@ const User = sequelize.define('User', {
   },
   program: {
     type: DataTypes.STRING(20)
-  },
-  collegeChi: {
-    type: DataTypes.STRING(100)
-  },
-  collegeEng: {
-    type: DataTypes.STRING(100)
-  },
-  departmentChi: {
-    type: DataTypes.STRING(100)
-  },
-  departmentEng: {
-    type: DataTypes.STRING(100)
   },
   continentChi: {
     type: DataTypes.STRING(20)
@@ -43,16 +88,16 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING(50)
   },
   universityChi: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING
   },
   universityEng: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING
   },
   exchangeDepartmentChi: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING
   },
   exchangeDepartmentEng: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING
   },
   duration: {
     type: DataTypes.STRING(20)
@@ -64,7 +109,7 @@ const User = sequelize.define('User', {
   timestamps: false
 })
 
-sequelize.sync({ alter: true })
-// sequelize.sync()
+// sequelize.sync({ alter: true })
+sequelize.sync()
 
 module.exports = User

@@ -1,10 +1,10 @@
 ---
 attrs:
   - studentID
-  - name
+  - nameChi
   - degree
-  - college
-  - department
+  - collegeChi
+  - departmentChi
   - nationalID
   - status
   - grade

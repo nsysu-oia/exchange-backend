@@ -55,6 +55,7 @@ const jwt = require('jsonwebtoken')
 const yaml = require('js-yaml')
 const fs = require('fs')
 const path = require('path')
+const User = require('../../models/user')
 
 
 const data = yaml.load(fs.readFileSync(
@@ -71,27 +72,38 @@ const departmentEngMap  = data.departmentEngMap
 router.post('/', function (req, res) {
   if (req.body) {
     if (req.body.studentID === process.env.TESTER_ID && req.body.password === process.env.TESTER_PW) {
-      const userInfo = { studentID: req.body.studentID }
-      const token = jwt.sign({ userInfo }, process.env.JWT_KEY)
-      res.json({ token, userInfo })
+      // generate jwt token for tester
+      const token = jwt.sign({
+        studentID: req.body.studentID
+      }, process.env.JWT_KEY, { expiresIn: '7d' })
+      res.json({ token })
     } else {
       axios
         .post('https://studyabroad.nsysu.edu.tw/sso.php', req.body)
         .then(({ data }) => {
           if (data) {
-            // data preprocessing
-            const userInfo = Object.fromEntries(attrs.map((_, i) => [attrs[i], data[i]]))
-            userInfo.degree = degreeMap[userInfo.degree]
-            userInfo.college = collegeMap[userInfo.college[1]]
-            userInfo.status = statusMap[userInfo.status]
-            userInfo.phones = userInfo.phones.split(',')
-
             // generate jwt token
             const token = jwt.sign({
               studentID: req.body.studentID
             }, process.env.JWT_KEY, { expiresIn: '7d' })
-
             res.json({ token })
+
+            // data preprocessing
+            const user = Object.fromEntries(attrs.map((_, i) => [attrs[i], data[i]]))
+            user.degreeChi = degreeMap[user.degreeChi]
+            user.collegeChi = collegeMap[user.collegeChi[1]]
+            user.collegeEng = collegeEngMap[user.collegeChi]
+            user.departmentEng = departmentEngMap[user.departmentChi]
+            user.status = statusMap[user.status]
+
+            // update the user info to db
+            User
+              .findOne({
+                where: { studentID: user.studentID }
+              })
+              .then(row => {
+                row.update(user)
+              })
           } else {
             // incorrect student ID or password
             res.sendStatus(400)

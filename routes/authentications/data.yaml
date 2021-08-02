@@ -1,0 +1,100 @@
+---
+attrs:
+  - studentID
+  - name
+  - degree
+  - college
+  - department
+  - nationalID
+  - status
+  - grade
+  - phones
+  - zipResidential
+  - cityResidential
+  - addressResidential
+  - zipCorrespondence
+  - cityCorrespondence
+  - addressCorrespondence
+  - email
+  - birthYear
+  - birthMonth
+  - birthDay
+degreeMap:
+  B: 學士班
+  M: 碩士班
+  D: 博士班
+collegeMap:
+  1: 文學院
+  2: 理學院
+  3: 工學院
+  4: 管理學院
+  5: 海洋科學院
+  6: 社會科學院
+  7: 西灣學院
+statusMap:
+  1: 在校
+  2: 復學
+  3: 休學
+  4: 退學
+  5: 畢業
+collegeEngMap:
+  文學院: 'College of Liberal Arts'
+  理學院: 'College of Science'
+  工學院: 'College of Engineering'
+  管理學院: 'College of Management'
+  海洋科學院: 'College of Marine Sciences'
+  社會科學院: 'College of Social Sciences'
+  西灣學院: 'Si-Wan College'
+departmentEngMap:
+  中國文學系: 'Department of Chinese Literature'
+  外國語文學系: 'Department of Foreign Languages and Literature'
+  音樂學系: 'Department of Music'
+  劇場藝術學系: 'Department of Theater Arts'
+  哲學研究所: 'Institute of Philosophy'
+  藝術管理與創業研究所: 'Graduate Institute of Arts Management and Entrepreneurship'
+  應用數學系: 'Department of Applied Mathematics'
+  生物科學系: 'Department of Biological Sciences'
+  化學系: 'Department of Chemistry'
+  物理學系: 'Department of Physics'
+  生物醫學研究所: 'Institute of Biomedical Sciences'
+  生技醫藥研究所: 'Institute of Biopharmaceutical Sciences'
+  理學院暨工學院醫學科技研究所: 'Institute of Medical Science and Technology'
+  精准醫學研究所: 'Institute of Precision Medicine'
+  理學國際博士學位學程: 'International PhD Program for Science'
+  資訊工程學系: 'Department of Computer Science and Engineering'
+  電機工程學系: 'Department of Electrical Engineering'
+  材料與光電科學學系: 'Department of Materials and Optoelectronic Science'
+  機械與機電工程學系: 'Department of Mechanical and Electro-Mechanical Engineering'
+  光電工程學系: 'Department of Photonics'
+  通訊工程研究所: 'Institute of Communications Engineering'
+  環境工程研究所: 'Institute of Environmental Engineering'
+  電機電力工程國際碩士學程: 'International Master''s Program in Electric Power Engineering'
+  電信工程國際碩士學位學程: 'Master''s Program in Telecommunication Engineering'
+  企業管理學系: 'Department of Business Management'
+  財務管理學系: 'Department of Finance'
+  資訊管理學系: 'Department of Information Management'
+  人力資源管理研究所: 'Institute of Human Resource Management'
+  行銷傳播管理研究所: 'Institute of Marketing Communications'
+  公共事務管理研究所: 'Institute of Public Affairs Management'
+  高階經營碩士學程: 'Executive MBA'
+  國際經營管理碩士學程: 'Master of Business Administration Program in International Business'
+  人力資源管理全英語碩士學位學程: 'Global Human Resource Management English MBA Program'
+  海洋生物科技暨資源學系: 'Department of Marine Biotechnology and Resources'
+  海洋環境及工程學系: 'Department of Marine Environment and Engineering'
+  海洋科學系: 'Department of Oceanography'
+  海洋事務研究所: 'Institute of Marine Affairs'
+  海洋生態與保育研究所: 'Institute of Marine Ecology and Conservation'
+  海下科技研究所: 'Institute of Undersea Technology'
+  海洋生物科技博士學位學程: 'Doctoral Degree Program in Marine Biotechnology'
+  海洋科學與全英語博士學位學程: 'International Graduate Program of Marine Science and Technology'
+  政治經濟學系: 'Department of Political Economy'
+  社會學系: 'Department of Sociology'
+  中國與亞太區域研究所: 'Institute of China and Asia-Pacific Studies'
+  經濟學研究所: 'Institute of Economics'
+  教育研究所: 'Institute of Education'
+  政治學研究所: 'Institute of Political Science'
+  亞太事務英語碩士學位學程: 'International Master Program in Asia-Pacific Affairs'
+  教育與人類發展教育全英語學位學程: 'International Graduate Program of Education and Human Development'
+  高階公共政策碩士學程在職專班: 'The Executive Master of Public Policy Program'
+  人文暨科技跨領域學士學位學程: 'Program in interdisciplinary Studies'
+...

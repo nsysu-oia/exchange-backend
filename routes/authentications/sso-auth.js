@@ -21,7 +21,7 @@
  *               studentID:
  *                 type: string
  *                 description: |
- *                   The student ID of the student enrolled in 
+ *                   The student ID of the student enrolled in
  *                   the exchange program *(case-insensitive)*.
  *                 example: yourStudentIDHere
  *               password:
@@ -52,48 +52,21 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 const jwt = require('jsonwebtoken')
-const attrs = [
-  'studentID',
-  'name',
-  'degree',
-  'college',
-  'department',
-  'nationalID',
-  'status',
-  'grade',
-  'phones',
-  'zipResidential',
-  'cityResidential',
-  'addressResidential',
-  'zipCorrespondence',
-  'cityCorrespondence',
-  'addressCorrespondence',
-  'email',
-  'birthYear',
-  'birthMonth',
-  'birthDay'
-]
-const degreeMap = {
-  B: '學士班',
-  M: '碩士班',
-  D: '博士班'
-}
-const collegeMap = {
-  1: '文學院',
-  2: '理學院',
-  3: '工學院',
-  4: '管理學院',
-  5: '海洋科學院',
-  6: '社會科學院',
-  7: '西灣學院'
-}
-const statusMap = {
-  1: '在校',
-  2: '復學',
-  3: '休學',
-  4: '退學',
-  5: '畢業'
-}
+const yaml = require('js-yaml')
+const fs = require('fs')
+const path = require('path')
+
+
+const data = yaml.load(fs.readFileSync(
+  path.resolve(__dirname, './data.yaml'),
+  'utf8'
+))
+const attrs             = data.attrs
+const degreeMap         = data.degreeMap
+const collegeMap        = data.collegeMap
+const statusMap         = data.statusMap
+const collegeEngMap     = data.collegeEngMap
+const departmentEngMap  = data.departmentEngMap
 
 router.post('/', function (req, res) {
   if (req.body) {

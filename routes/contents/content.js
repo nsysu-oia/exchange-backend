@@ -47,7 +47,7 @@ router.post('/', verifyToken, (req, res) => {
     if (err) {
       res.sendStatus(401)
     } else {
-      if (!!req.body.content) {
+      if (req.body.content) {
         try {
           const content = yaml.load(fs.readFileSync(
             path.resolve(__dirname, './' + req.body.content + '.yaml'),

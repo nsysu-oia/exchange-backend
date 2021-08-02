@@ -20,7 +20,7 @@
  *               studentID:
  *                 type: string
  *                 description: |
- *                   The student ID of the student enrolled in 
+ *                   The student ID of the student enrolled in
  *                   the exchange program *(case-insensitive)*.
  *                 example: yourStudentIDHere
  *             required:
@@ -47,7 +47,7 @@ router.post('/', function (req, res) {
       })
       .then(user => {
         // if not found, user is null
-        if (!!user) {
+        if (user) {
           res.sendStatus(200)
         } else {
           // the student is not registered in the exchange program

@@ -1,10 +1,13 @@
-const { Sequelize } = require('sequelize')
-const sequelize = new Sequelize('oia_exchange_platform', 'root', process.env.DB_PW, {
-  host: 'localhost',
-  dialect: 'mariadb',
-  dialectOptions: {
-    timezone: 'Asia/Taipei'
-  }
-})
+const sequelize = require('./connect')
+const User = require('./user')
+const ReturnReport = require('./return-report')
 
-module.exports = sequelize
+User.hasOne(ReturnReport)
+ReturnReport.belongsTo(User)
+
+sequelize.sync()
+
+module.exports = {
+  User: User,
+  ReturnReport: ReturnReport
+}

@@ -39,7 +39,7 @@ const jwt = require('jsonwebtoken')
 const yaml = require('js-yaml')
 const fs = require('fs')
 const path = require('path')
-const verifyToken = require('../verifyToken')
+const verifyToken = require('../verify-token')
 const router = express.Router()
 
 router.post('/', verifyToken, (req, res) => {

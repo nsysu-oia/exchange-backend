@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('./index.js')
+const sequelize = require('./connect')
 
-const User = sequelize.define('User', {
+const User = sequelize.define('user', {
   studentID: {
     type: DataTypes.STRING(15),
     primaryKey: true
@@ -108,8 +108,5 @@ const User = sequelize.define('User', {
 }, {
   timestamps: false
 })
-
-// sequelize.sync({ alter: true })
-sequelize.sync()
 
 module.exports = User

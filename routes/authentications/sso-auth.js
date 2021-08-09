@@ -90,7 +90,7 @@ router.post('/', function (req, res) {
 
             // data preprocessing
             const user = Object.fromEntries(attrs.map((_, i) => [attrs[i], data[i]]))
-            user.degreeChi = degreeMap[user.degreeChi]
+            user.degree = degreeMap[user.degree]
             user.collegeChi = collegeMap[user.collegeChi[1]]
             user.collegeEng = collegeEngMap[user.collegeChi]
             user.departmentEng = departmentEngMap[user.departmentChi]

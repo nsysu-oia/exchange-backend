@@ -29,29 +29,23 @@ router.get('/', verifyToken, (req, res) => {
       ReturnReport
         .findOne({
           where: { userStudentID: decoded.studentID },
-          include: { all: true },
-          raw: true,
-          nest: true
+          include: { all: true }
         })
         .then(returnReport => {
           // if not found, user is null
           if (returnReport) {
-            const { id, userStudentID, user, ...rest} = returnReport
+            const { id, userStudentID, user, ...rest} = returnReport.get({ plain: true })
             res.json({ ...user, ...rest }) // merge two object
           } else {
             ReturnReport
-              .create({ userStudentID: decoded.studentID })
-              .then(() => { 
-                ReturnReport.findOne({ 
-                  where: { userStudentID: decoded.studentID },
-                  include: { all: true },
-                  raw: true,
-                  nest: true
-                })
-                .then(returnReport => {
-                  const { id, userStudentID, user, ...rest} = returnReport
-                  res.json({ ...user, ...rest }) // merge two object
-                })
+              .create({ userStudentID: decoded.studentID }, { include: { all: true } })
+              .then(returnReport => { 
+                returnReport
+                  .reload()
+                  .then(returnReport => {
+                    const { id, userStudentID, user, ...rest} = returnReport.get({ plain: true })
+                    res.json({ ...user, ...rest }) // merge two object
+                  })
               })
               .catch(() => { res.sendStatus(400) })
           }

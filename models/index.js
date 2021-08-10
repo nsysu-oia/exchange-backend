@@ -5,6 +5,7 @@ const ReturnReport = require('./return-report')
 User.hasOne(ReturnReport)
 ReturnReport.belongsTo(User)
 
+// ReturnReport.sync({ alter: true })
 sequelize.sync()
 
 module.exports = {

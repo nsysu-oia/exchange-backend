@@ -24,7 +24,6 @@ require('dotenv').config()
 const indexRouter = require('./routes/index')
 const sidAuthRouter = require('./routes/authentications/sid-auth')
 const ssoAuthRouter = require('./routes/authentications/sso-auth')
-// const contentRouter = require('./routes/contents/content')
 const returnReportRouter = require('./routes/return-report/return-report')
 
 const app = express()
@@ -39,7 +38,6 @@ app.use(cors())
 app.use('/', indexRouter)
 app.use('/sid-auth', sidAuthRouter)
 app.use('/sso-auth', ssoAuthRouter)
-// app.use('/content', contentRouter)
 app.use('/return-report', returnReportRouter)
 
 // openapi

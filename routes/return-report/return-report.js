@@ -2,9 +2,11 @@
  * @openapi
  * /return-report:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Retrieve form data from the db
  *     description: |
- *       TBD
+ *       Retrieve the user data for return report based on the studentID encoded in the Bearer header..
  *     tags:
  *       - applications
  *     responses:
@@ -12,6 +14,43 @@
  *         description: OK
  *       400:
  *         description: Not enrolled in the exchange program
+ *       401:
+ *         $ref: '#/components/responses/UnauthorizedError'
+ *   post:
+ *     security:
+ *       - bearerAuth: []
+ *     summary: Update individual question response to db
+ *     description: |
+ *       TBD
+ *     tags:
+ *       - applications
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               identifier:
+ *                 type: string
+ *                 description: |
+ *                   The identifier for the question to be updated.
+ *                 example: studentClubName
+ *               value:
+ *                 type: string
+ *                 description: |
+ *                   The associated value.
+ *                 example: Power Dance Club
+ *             required:
+ *               - identifier
+ *               - value
+ *     responses:
+ *       200:
+ *         description: OK
+ *       400:
+ *         description: Not enrolled in the exchange program or have never performed `GET /return-report`
+ *       401:
+ *         $ref: '#/components/responses/UnauthorizedError'
  *
  */
 
@@ -48,6 +87,32 @@ router.get('/', verifyToken, (req, res) => {
                   })
               })
               .catch(() => { res.sendStatus(400) })
+          }
+        })
+    }
+  })
+})
+
+router.post('/', verifyToken, (req, res) => {
+  jwt.verify(req.token, process.env.JWT_KEY, (err, decoded) => {
+    if (err) {
+      res.sendStatus(401)
+    } else {
+      ReturnReport
+        .findOne({
+          where: { userStudentID: decoded.studentID }
+        })
+        .then(returnReport => {
+          if (returnReport) {
+            // not check the validity of the identifier due to performance concern
+            res.sendStatus(200)
+
+            const data = {}
+            data[req.body.identifier] = req.body.value
+
+            returnReport.update(data)
+          } else {
+            res.sendStatus(400)
           }
         })
     }

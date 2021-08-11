@@ -130,10 +130,6 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING,
     defaultValue: ''
   },
-  duration: {
-    type: DataTypes.STRING(20),
-    defaultValue: ''
-  },
   scholarship: {
     type: DataTypes.STRING(50),
     defaultValue: ''

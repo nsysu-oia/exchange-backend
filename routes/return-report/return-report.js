@@ -41,9 +41,15 @@
  *                 description: |
  *                   The associated value.
  *                 example: Power Dance Club
+ *               fillDate:
+ *                 type: string
+ *                 description: |
+ *                   The date on which the data is updated
+ *                 example: 2021-08-11
  *             required:
  *               - identifier
  *               - value
+ *               - fillDate
  *     responses:
  *       200:
  *         description: OK
@@ -73,7 +79,7 @@ router.get('/', verifyToken, (req, res) => {
         .then(returnReport => {
           // if not found, user is null
           if (returnReport) {
-            const { id, userStudentID, user, ...rest} = returnReport.get({ plain: true })
+            const { id, userStudentID, user, ...rest } = returnReport.get({ plain: true })
             res.json({ ...user, ...rest }) // merge two object
           } else {
             ReturnReport
@@ -82,7 +88,7 @@ router.get('/', verifyToken, (req, res) => {
                 returnReport
                   .reload()
                   .then(returnReport => {
-                    const { id, userStudentID, user, ...rest} = returnReport.get({ plain: true })
+                    const { id, userStudentID, user, ...rest } = returnReport.get({ plain: true })
                     res.json({ ...user, ...rest }) // merge two object
                   })
               })
@@ -109,8 +115,11 @@ router.post('/', verifyToken, (req, res) => {
 
             const data = {}
             data[req.body.identifier] = req.body.value
+            data.fillDate = req.body.fillDate
 
-            returnReport.update(data)
+            returnReport
+              .update(data)
+              .catch(err => { console.log(err) })
           } else {
             res.sendStatus(400)
           }

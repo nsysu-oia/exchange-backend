@@ -6,6 +6,10 @@ const ReturnReport = sequelize.define('returnReport', {
     type: DataTypes.DATEONLY,
     defaultValue: DataTypes.NOW
   },
+  duration: {
+    type: DataTypes.STRING(20),
+    defaultValue: ''
+  },
   costVisa: {
     type: DataTypes.INTEGER.UNSIGNED,
     defaultValue: 0
@@ -83,6 +87,10 @@ const ReturnReport = sequelize.define('returnReport', {
       return this.setDataValue('motivations', JSON.stringify(arr))
     }
   },
+  motivationOtherDetail: {
+    type: DataTypes.STRING,
+    defaultValue: ''
+  },
   motivationPrimary: {
     type: DataTypes.STRING(50),
     defaultValue: ''
@@ -96,6 +104,10 @@ const ReturnReport = sequelize.define('returnReport', {
     set(arr) {
       return this.setDataValue('gains', JSON.stringify(arr))
     }
+  },
+  gainOtherDetail: {
+    type: DataTypes.STRING,
+    defaultValue: ''
   },
   gainPrimary: {
     type: DataTypes.STRING(80),

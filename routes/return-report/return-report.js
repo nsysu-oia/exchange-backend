@@ -31,25 +31,15 @@
  *           schema:
  *             type: object
  *             properties:
- *               identifier:
- *                 type: string
+ *               values:
+ *                 type: object 
  *                 description: |
- *                   The identifier for the question to be updated.
- *                 example: studentClubName
- *               value:
- *                 type: string
- *                 description: |
- *                   The associated value.
- *                 example: Power Dance Club
- *               fillDate:
- *                 type: string
- *                 description: |
- *                   The date on which the data is updated
- *                 example: 2021-08-11
+ *                   The argument would be directly passed into [sequelize update()](https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-update).
+ *                 example:
+ *                   studentClubName: Power Dance Club
+ *                   fillDate: 2021-08-11
  *             required:
- *               - identifier
- *               - value
- *               - fillDate
+ *               - values
  *     responses:
  *       200:
  *         description: OK
@@ -113,12 +103,8 @@ router.post('/', verifyToken, (req, res) => {
             // not check the validity of the identifier due to performance concern
             res.sendStatus(200)
 
-            const data = {}
-            data[req.body.identifier] = req.body.value
-            data.fillDate = req.body.fillDate
-
             returnReport
-              .update(data)
+              .update(req.body.values)
               .catch(err => { console.log(err) })
           } else {
             res.sendStatus(400)

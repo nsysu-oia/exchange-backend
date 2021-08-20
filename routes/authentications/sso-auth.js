@@ -75,7 +75,7 @@ router.post('/', function (req, res) {
       // generate jwt token for tester
       const token = jwt.sign({
         studentID: req.body.studentID
-      }, process.env.JWT_KEY, { expiresIn: '7d' })
+      }, process.env.JWT_KEY/* , { expiresIn: '7d' } */)
       res.json({ token })
     } else {
       axios
@@ -85,7 +85,7 @@ router.post('/', function (req, res) {
             // generate jwt token
             const token = jwt.sign({
               studentID: req.body.studentID
-            }, process.env.JWT_KEY, { expiresIn: '7d' })
+            }, process.env.JWT_KEY/* , { expiresIn: '7d' } */)
             res.json({ token })
 
             // data preprocessing

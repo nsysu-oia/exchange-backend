@@ -76,7 +76,16 @@ router.post('/', function (req, res) {
       const token = jwt.sign({
         studentID: req.body.studentID
       }, process.env.JWT_KEY/* , { expiresIn: '7d' } */)
-      res.json({ token })
+      User
+        .findOne({
+          where: { studentID: req.body.studentID }
+        })
+        .then(row => {
+          res.json({
+            token: token,
+            returnReportOnly: row['returnReportOnly']
+          })
+        })
     } else {
       axios
         .post('https://studyabroad.nsysu.edu.tw/sso.php', req.body)
@@ -86,7 +95,17 @@ router.post('/', function (req, res) {
             const token = jwt.sign({
               studentID: req.body.studentID
             }, process.env.JWT_KEY/* , { expiresIn: '7d' } */)
-            res.json({ token })
+
+            User
+              .findOne({
+                where: { studentID: req.body.studentID }
+              })
+              .then(row => {
+                res.json({
+                  token: token,
+                  returnReportOnly: row['returnReportOnly']
+                })
+              })
 
             // data preprocessing
             const user = Object.fromEntries(attrs.map((_, i) => [attrs[i], data[i]]))

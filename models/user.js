@@ -133,6 +133,10 @@ const User = sequelize.define('user', {
   scholarship: {
     type: DataTypes.STRING(50),
     defaultValue: ''
+  },
+  returnReportOnly: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
   }
 }, {
   timestamps: false

@@ -122,14 +122,6 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING,
     defaultValue: ''
   },
-  exchangeDepartmentChi: {
-    type: DataTypes.STRING,
-    defaultValue: ''
-  },
-  exchangeDepartmentEng: {
-    type: DataTypes.STRING,
-    defaultValue: ''
-  },
   scholarship: {
     type: DataTypes.STRING(50),
     defaultValue: ''

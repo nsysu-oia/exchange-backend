@@ -2,6 +2,14 @@ const { DataTypes } = require('sequelize')
 const sequelize = require('./connect')
 
 const ReturnReport = sequelize.define('returnReport', {
+  exchangeDepartmentChi: {
+    type: DataTypes.STRING,
+    defaultValue: ''
+  },
+  exchangeDepartmentEng: {
+    type: DataTypes.STRING,
+    defaultValue: ''
+  },
   fillDate: {
     type: DataTypes.DATEONLY,
     defaultValue: DataTypes.NOW

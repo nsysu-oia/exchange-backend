@@ -55,7 +55,7 @@ router.post('/', verifyToken, upload.single('file'), (req, res) => {
           formData.append('api', 'SYNO.FileStation.Upload')
           formData.append('version', '3')
           formData.append('method', 'upload')
-          formData.append('path', '/share/03-學生交換組/00-Maxine-outbound/05-返國報告書/' + req.body.path)
+          formData.append('path', req.body.path)
           formData.append('create_parents', 'true')
           formData.append('overwrite', 'overwrite')
           formData.append('file', req.file.buffer, req.body.filename)

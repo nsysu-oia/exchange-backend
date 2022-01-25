@@ -1,14 +1,14 @@
 /**
  * @openapi
- * /return-report/upload:
+ * /syno/upload:
  *   post:
  *     security:
  *       - bearerAuth: []
- *     summary: Retrieve form data from the db
+ *     summary: Upload file to syno NAS
  *     description: |
- *       Retrieve the user data for return report based on the studentID encoded in the Bearer header..
+ *      Upload a file to the synology NAS using multipart/form-data.
  *     tags:
- *       - applications
+ *       - syno
  *     requestBody:
  *       required: true
  *       content:
@@ -20,7 +20,7 @@
  *                 type: string 
  *                 format: binary
  *                 description: |
- *                   PDF Blob/File to be uploaded
+ *                   Blob/File to be uploaded
  *             required:
  *               - file
  *     responses:
@@ -38,7 +38,7 @@ const jwt = require('jsonwebtoken')
 const FormData = require('form-data')
 const axios = require('axios')
 const verifyToken = require('../verify-token')
-const { synoLogin, synoLogout } = require('../syno')
+const { synoLogin, synoLogout } = require('./syno')
 const router = express.Router()
 
 const upload = multer()

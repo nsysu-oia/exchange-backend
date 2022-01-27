@@ -103,6 +103,7 @@ router.post('/', function (req, res) {
               .then(row => {
                 res.json({
                   token: token,
+                  scholarship: row['scholarship'],
                   returnReportOnly: row['returnReportOnly']
                 })
               })

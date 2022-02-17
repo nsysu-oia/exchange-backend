@@ -83,6 +83,12 @@ router.post('/', function (req, res) {
         .then(row => {
           res.json({
             token: token,
+            studentID: row['studentID'],
+            semester: row['semester'],
+            countryChi: row['countryChi'],
+            universityChi: row['universityChi'],
+            nameChi: row['nameChi'],
+            scholarship: row['scholarship'],
             returnReportOnly: row['returnReportOnly']
           })
         })
@@ -103,6 +109,11 @@ router.post('/', function (req, res) {
               .then(row => {
                 res.json({
                   token: token,
+                  studentID: row['studentID'],
+                  semester: row['semester'],
+                  countryChi: row['countryChi'],
+                  universityChi: row['universityChi'],
+                  nameChi: row['nameChi'],
                   scholarship: row['scholarship'],
                   returnReportOnly: row['returnReportOnly']
                 })

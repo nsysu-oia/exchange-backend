@@ -26,6 +26,7 @@ const sidAuthRouter = require('./routes/authentications/sid-auth')
 const ssoAuthRouter = require('./routes/authentications/sso-auth')
 const returnReportRouter = require('./routes/return-report/return-report')
 const synoUploadRouter = require('./routes/syno/upload')
+const synoGetinfoRouter = require('./routes/syno/getinfo')
 const fontRouter = require('./routes/fonts/font')
 
 const app = express()
@@ -42,6 +43,7 @@ app.use('/sid-auth', sidAuthRouter)
 app.use('/sso-auth', ssoAuthRouter)
 app.use('/return-report', returnReportRouter)
 app.use('/syno/upload', synoUploadRouter)
+app.use('/syno/getinfo', synoGetinfoRouter)
 app.use('/font', fontRouter)
 
 // openapi

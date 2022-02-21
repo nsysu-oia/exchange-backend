@@ -62,7 +62,8 @@ router.post('/', verifyToken, upload.single('file'), (req, res) => {
 
           axios
             .post('https://studyabroad.nsysu.edu.tw:5001/webapi/entry.cgi?_sid=' + data.data.sid, formData, {
-              headers: formData.getHeaders()
+              headers: formData.getHeaders(),
+              maxBodyLength: 100000000
             })
             .then(({ data }) => {
               if (data.success) {

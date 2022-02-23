@@ -2,20 +2,20 @@ Back-end Server for the [Exchange Program Platform](https://github.com/nsysu-oia
 
 ## Project setup
 ```
-npm install
+yarn
 ```
 
 ### Start the development server
 ```
-npm run devStart
+yarn devStart
 ```
 
 ### Start the server
 ```
-npm run start
+yarn start
 ```
 
 ### Lints and fixes files
 ```
-npm run lint
+yarn lint
 ```

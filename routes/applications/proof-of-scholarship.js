@@ -1,12 +1,12 @@
 /**
  * @openapi
- * /proof-of-exchange:
+ * /proof-of-scholarship:
  *   get:
  *     security:
  *       - bearerAuth: []
  *     summary: Retrieve form data from the db
  *     description: |
- *       Retrieve the user data for the proof of exchange based on the studentID encoded in the Bearer header..
+ *       Retrieve the user data for the proof of scholarship based on the studentID encoded in the Bearer header..
  *     tags:
  *       - applications
  *     responses:
@@ -21,7 +21,7 @@
  *       - bearerAuth: []
  *     summary: Update individual question response to db
  *     description: |
- *       Update individual question response to proof of exchange table
+ *       Update individual question response to proof of scholarship table
  *     tags:
  *       - applications
  *     requestBody:
@@ -52,7 +52,7 @@
 
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const { ProofOfExchange } = require('../../models/index')
+const { ProofOfScholarship } = require('../../models/index')
 const verifyToken = require('../verify-token')
 const router = express.Router()
 
@@ -61,24 +61,24 @@ router.get('/', verifyToken, (req, res) => {
     if (err) {
       res.sendStatus(401)
     } else {
-      ProofOfExchange
+      ProofOfScholarship
         .findOne({
           where: { userStudentID: decoded.studentID },
           include: { all: true }
         })
-        .then(proofOfExchange => {
+        .then(proofOfScholarship => {
           // if not found, user is null
-          if (proofOfExchange) {
-            const { id, userStudentID, user, ...rest } = proofOfExchange.get({ plain: true })
+          if (proofOfScholarship) {
+            const { id, userStudentID, user, ...rest } = proofOfScholarship.get({ plain: true })
             res.json({ ...user, ...rest }) // merge two object
           } else {
-            ProofOfExchange
+            ProofOfScholarship
               .create({ userStudentID: decoded.studentID }, { include: { all: true } })
-              .then(proofOfExchange => { 
-                proofOfExchange
+              .then(proofOfScholarship => { 
+                proofOfScholarship
                   .reload()
-                  .then(proofOfExchange => {
-                    const { id, userStudentID, user, ...rest } = proofOfExchange.get({ plain: true })
+                  .then(proofOfScholarship => {
+                    const { id, userStudentID, user, ...rest } = proofOfScholarship.get({ plain: true })
                     res.json({ ...user, ...rest }) // merge two object
                   })
               })
@@ -94,16 +94,16 @@ router.post('/', verifyToken, (req, res) => {
     if (err) {
       res.sendStatus(401)
     } else {
-      ProofOfExchange
+      ProofOfScholarship
         .findOne({
           where: { userStudentID: decoded.studentID }
         })
-        .then(proofOfExchange => {
-          if (proofOfExchange) {
+        .then(proofOfScholarship => {
+          if (proofOfScholarship) {
             // not check the validity of the identifier due to performance concern
             res.sendStatus(200)
 
-            proofOfExchange
+            proofOfScholarship
               .update(req.body.values)
               .catch(err => { console.log(err) })
           } else {

@@ -14,7 +14,10 @@ const router = express.Router()
 
 /* GET home page. */
 router.get('/', function (_, res) {
-  res.render('index', { title: 'Express' })
+  res.render('index', {
+    title: 'Express',
+    content: 'Welcome to Express, served by Office of International Affairs, NSYSU'
+  })
 })
 
 module.exports = router

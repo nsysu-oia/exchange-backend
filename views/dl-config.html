@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <title>下載連結設定 - 出國計畫單一入口</title>
+  <link rel="stylesheet" href="/stylesheets/dl-config.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <h1>國立中山大學出國計畫單一入口</h1>
+  <h1>下載連結設定後台</h1>
+  <p>{{ content }}</p>
+  <div>
+    <label for="username">帳號</label>
+    <input name="username" type="text">
+  </div>
+  <div>
+    <label for="password">密碼</label>
+    <input name="password" type="password">
+  </div>
+  <p>帳號驗證待開發</p>
+
+  <div>
+    {{#each items }}
+    <div>
+      {{#with this }}
+      <label for="{{ id }}">{{ title }}</label><br>
+      <input id="{{ id }}" type="text" value="{{ link }}" onchange="updateLink(this)">
+      {{/with}}
+    </div><br>
+    {{/each}}
+  </div>
+
+  <script>
+    function updateLink (el) {
+      axios.post('', {
+        id: el.id,
+        newLink: el.value
+      })
+    }
+  </script>
+</body>
+
+</html>

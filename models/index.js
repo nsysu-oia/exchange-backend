@@ -3,6 +3,7 @@ const User = require('./user')
 const ReturnReport = require('./return-report')
 const ProofOfExchange = require('./proof-of-exchange')
 const ProofOfScholarship = require('./proof-of-scholarship')
+const DownloadLink = require('./download-link')
 
 User.hasOne(ReturnReport)
 User.hasOne(ProofOfExchange)
@@ -16,11 +17,13 @@ ProofOfScholarship.belongsTo(User)
 // ReturnReport.sync({ alter: true })
 // ProofOfExchange.sync({ alter: true })
 // ProofOfExchange.sync({ alter: true })
+// DownloadLink.sync({ alter: true })
 sequelize.sync()
 
 module.exports = {
   User: User,
   ReturnReport: ReturnReport,
   ProofOfExchange: ProofOfExchange,
-  ProofOfScholarship: ProofOfScholarship
+  ProofOfScholarship: ProofOfScholarship,
+  DownloadLink: DownloadLink
 }
